@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow – Donor Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    <div class="logo" onclick="goHome()">
+        <img src="logo.svg">
+    </div>
+
+    <div class="nav-links">
+        <button onclick="goHome()">Home</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<!-- Dashboard Content -->
+<div class="container">
+    <h2>Welcome, Donor 👋</h2>
+
+    <!-- Donor summary -->
+    <div class="cards mt-sm">
+        <div class="card">
+            <h3>Total Donations</h3>
+            <p class="text-muted">3 lifetime donations</p>
+        </div>
+        <div class="card">
+            <h3>Last Donation</h3>
+            <p class="text-muted">45 days ago</p>
+        </div>
+        <div class="card">
+            <h3>Next Eligible Date</h3>
+            <p class="text-muted">in 15 days</p>
+        </div>
+    </div>
+
+    <!-- Main actions -->
+    <div class="cards mt-lg">
+        <div class="card">
+            <h3>Donate Blood</h3>
+            <p>Schedule a blood donation and help save lives.</p>
+            <button class="btn btn-primary" onclick="donate()">Donate Now</button>
+        </div>
+
+        <div class="card">
+            <h3>My Donations</h3>
+            <p>View your past donation history.</p>
+            <button class="btn btn-primary" onclick="viewHistory()">View History</button>
+        </div>
+
+        <div class="card">
+            <h3>Profile</h3>
+            <p>Update your personal details and availability.</p>
+            <button class="btn btn-primary" onclick="editProfile()">Edit Profile</button>
+        </div>
+    </div>
+
+    <!-- Upcoming donation + tips -->
+    <div class="card-panel mt-lg">
+        <h3>Next Steps</h3>
+        <p class="text-muted mt-sm">This is sample information to make the dashboard feel complete.</p>
+        <ul class="mt-sm" style="list-style: none; padding-left: 0; font-size: 0.9rem;">
+            <li>• Confirm your availability for the next camp.</li>
+            <li>• Keep your profile updated with your latest contact details.</li>
+            <li>• Read preparation tips before your next donation.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    © 2025 LifeFlow | Blood Donation Management System
+</div>
+
+<script>
+function goHome() {
+    window.location.href = "index.html";
+}
+
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+
+function donate() {
+    window.location.href = "donor-donate.html";
+}
+
+function viewHistory() {
+    window.location.href = "donor-history.html";
+}
+
+function editProfile() {
+    window.location.href = "donor-profile.html";
+}
+
+// Role protection
+if (localStorage.getItem("userRole") !== "donor") {
+    alert("Unauthorized access!");
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

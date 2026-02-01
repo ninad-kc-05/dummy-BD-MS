@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifeFlow – My Requests</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="header">
+    <div class="logo" onclick="goHome()">
+      <img src="logo.svg" alt="LifeFlow" />
+    </div>
+    <div class="nav-links">
+      <button onclick="goReceiverDashboard()">Back to Dashboard</button>
+    </div>
+  </div>
+
+  <div class="container card-panel card-wide">
+    <h2 class="section-title">My <span>Requests</span> (Dummy)</h2>
+    <p class="text-muted mt-sm">Static list of requests owned by this hospital.</p>
+
+    <table style="width:100%; border-collapse:collapse; font-size:0.9rem; margin-top:1rem;">
+      <thead>
+        <tr style="text-align:left; border-bottom:1px solid #1f2937;">
+          <th style="padding:0.5rem 0.25rem;">Patient</th>
+          <th style="padding:0.5rem 0.25rem;">Group</th>
+          <th style="padding:0.5rem 0.25rem;">Units</th>
+          <th style="padding:0.5rem 0.25rem;">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:0.45rem 0.25rem;">Rahul S.</td>
+          <td style="padding:0.45rem 0.25rem;">B+</td>
+          <td style="padding:0.45rem 0.25rem;">2</td>
+          <td style="padding:0.45rem 0.25rem;">Pending</td>
+        </tr>
+        <tr>
+          <td style="padding:0.45rem 0.25rem;">Anita K.</td>
+          <td style="padding:0.45rem 0.25rem;">O-</td>
+          <td style="padding:0.45rem 0.25rem;">1</td>
+          <td style="padding:0.45rem 0.25rem;">Approved</td>
+        </tr>
+        <tr>
+          <td style="padding:0.45rem 0.25rem;">Imran P.</td>
+          <td style="padding:0.45rem 0.25rem;">A+</td>
+          <td style="padding:0.45rem 0.25rem;">3</td>
+          <td style="padding:0.45rem 0.25rem;">Completed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    © 2025 LifeFlow | Blood Donation Management System
+  </div>
+
+  <script>
+    function goHome() { window.location.href = "index.html"; }
+    function goReceiverDashboard() { window.location.href = "receiver-dashboard.html"; }
+  </script>
+</body>
+</html>

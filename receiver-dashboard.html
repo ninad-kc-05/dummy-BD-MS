@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow – Hospital Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    <div class="logo" onclick="goHome()">
+        <img src="logo.svg">
+    </div>
+
+    <div class="nav-links">
+        <button onclick="goHome()">Home</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<!-- Dashboard Content -->
+<div class="container">
+    <h2>Welcome, Hospital / Blood Bank 🏥</h2>
+
+    <!-- Hospital overview -->
+    <div class="cards mt-sm">
+        <div class="card">
+            <h3>Open Requests</h3>
+            <p class="text-muted">5 pending approvals</p>
+        </div>
+        <div class="card">
+            <h3>Units In Stock</h3>
+            <p class="text-muted">146 units available</p>
+        </div>
+        <div class="card">
+            <h3>Critical Alerts</h3>
+            <p class="text-muted">2 blood groups low</p>
+        </div>
+    </div>
+
+    <!-- Main actions -->
+    <div class="cards mt-lg">
+        <div class="card">
+            <h3>Request Blood</h3>
+            <p>Create a new blood request for patients.</p>
+            <button class="btn btn-primary" onclick="requestBlood()">New Request</button>
+        </div>
+
+        <div class="card">
+            <h3>My Requests</h3>
+            <p>View all blood requests made by your hospital.</p>
+            <button class="btn btn-primary" onclick="viewRequests()">View Requests</button>
+        </div>
+
+        <div class="card">
+            <h3>Inventory</h3>
+            <p>Manage available blood units.</p>
+            <button class="btn btn-primary" onclick="manageInventory()">Manage Inventory</button>
+        </div>
+    </div>
+
+    <!-- Sample requests table -->
+    <div class="card-panel mt-lg">
+        <h3>Recent Requests</h3>
+        <p class="text-muted mt-sm">Dummy data to show how hospital activity could look.</p>
+        <table style="width:100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 0.75rem;">
+            <thead>
+                <tr style="text-align:left; border-bottom: 1px solid #1f2937;">
+                    <th style="padding: 0.4rem 0.2rem;">Patient</th>
+                    <th style="padding: 0.4rem 0.2rem;">Blood Group</th>
+                    <th style="padding: 0.4rem 0.2rem;">Units</th>
+                    <th style="padding: 0.4rem 0.2rem;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 0.4rem 0.2rem;">Rahul S.</td>
+                    <td style="padding: 0.4rem 0.2rem;">B+</td>
+                    <td style="padding: 0.4rem 0.2rem;">2</td>
+                    <td style="padding: 0.4rem 0.2rem;">Pending</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.4rem 0.2rem;">Anita K.</td>
+                    <td style="padding: 0.4rem 0.2rem;">O-</td>
+                    <td style="padding: 0.4rem 0.2rem;">1</td>
+                    <td style="padding: 0.4rem 0.2rem;">Approved</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.4rem 0.2rem;">Imran P.</td>
+                    <td style="padding: 0.4rem 0.2rem;">A+</td>
+                    <td style="padding: 0.4rem 0.2rem;">3</td>
+                    <td style="padding: 0.4rem 0.2rem;">Completed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    © 2025 LifeFlow | Blood Donation Management System
+</div>
+
+<script>
+function goHome() {
+    window.location.href = "index.html";
+}
+
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+
+function requestBlood() {
+    window.location.href = "receiver-request.html";
+}
+
+function viewRequests() {
+    window.location.href = "receiver-requests.html";
+}
+
+function manageInventory() {
+    window.location.href = "receiver-inventory.html";
+}
+
+// Role protection
+if (localStorage.getItem("userRole") !== "receiver") {
+    alert("Unauthorized access!");
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

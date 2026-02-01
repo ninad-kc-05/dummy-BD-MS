@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow – Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="logo" onclick="goHome()">
+            <img src="logo.svg">
+        </div>
+
+        <div class="nav-links">
+            <button onclick="goHome()">Home</button>
+            <button onclick="goRegister()">Register</button>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="container card-panel card-narrow">
+        <h2 class="text-center">Login</h2>
+
+        <label>Email</label>
+        <input type="email" placeholder="Enter email">
+
+        <label>Password</label>
+        <input type="password" placeholder="Enter password">
+
+        <label>Select Role</label>
+        <select id="role">
+            <option value="donor">Donor</option>
+            <option value="receiver">Hospital / Receiver</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <button class="btn btn-primary" style="width:100%;" onclick="login()">Login</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © 2025 LifeFlow | Blood Donation Management System
+    </div>
+
+<script>
+function goHome() {
+    window.location.href = "index.html";
+}
+
+function goRegister(role) {
+    let url = "register.html";
+    if (role) {
+        url += "?role=" + encodeURIComponent(role);
+    }
+    window.location.href = url;
+}
+
+// Preselect role based on ?role= in URL (e.g. login.html?role=donor)
+(function preselectRole() {
+    const params = new URLSearchParams(window.location.search);
+    const roleFromUrl = params.get("role");
+    if (!roleFromUrl) return;
+
+    const select = document.getElementById("role");
+    if (!select) return;
+
+    const values = Array.from(select.options).map(o => o.value);
+    if (values.includes(roleFromUrl)) {
+        select.value = roleFromUrl;
+    }
+})();
+
+function login() {
+    const role = document.getElementById("role").value;
+
+    localStorage.setItem("userRole", role);
+
+    if (role === "donor") {
+        window.location.href = "donor-dashboard.html";
+    } else if (role === "receiver") {
+        window.location.href = "receiver-dashboard.html";
+    } else {
+        window.location.href = "admin-dashboard.html";
+    }
+}
+</script>
+
+</body>
+</html>
